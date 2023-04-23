@@ -21,7 +21,7 @@ function Traditional_Gradient_Descent
         b2_delta_avg = zeros(length(b2),1);
         b3_delta_avg = zeros(length(b3),1);
         b4_delta_avg = zeros(length(b4),1);
-        for k=1:length(x1)
+        for k=1:10
             x = [x1(k); x2(k)];
             % Forward pass
             a2 = sigmoid(x,W2,b2);
@@ -42,12 +42,12 @@ function Traditional_Gradient_Descent
         end
 
         % Average the gradient
-        W2_delta_avg = mean(W2_delta_avg);
-        W3_delta_avg = mean(W3_delta_avg);
-        W4_delta_avg = mean(W4_delta_avg);
-        b2_delta_avg = mean(b2_delta_avg);
-        b3_delta_avg = mean(b3_delta_avg);
-        b4_delta_avg = mean(b4_delta_avg);
+        W2_delta_avg = 1/10 * (W2_delta_avg);
+        W3_delta_avg = 1/10 * (W3_delta_avg);
+        W4_delta_avg = 1/10 * (W4_delta_avg);
+        b2_delta_avg = 1/10 * (b2_delta_avg);
+        b3_delta_avg = 1/10 * (b3_delta_avg);
+        b4_delta_avg = 1/10 * (b4_delta_avg);
 
         % Gradient step
         W2 = W2 - eta*W2_delta_avg;
